@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Jake Salazar</title>
+	<meta name="description" content="JavaScript">
+	<meta name="author" content="Jake Salazar">
+</head>
+<body>
+
+
+<script>
+
+// ++++++++++++++++++++++++++++++++++
+// object (constructor) without namespace
+// ++++++++++++++++++++++++++++++++++
+
+function Burger (type) {
+   this.type = type;
+   this.patty = "double";
+}
+
+Burger.prototype.getDescription = function() {
+    	return this.patty+' '+this.type+' burger';
+};
+
+var meal0 = new Burger('cheese');
+
+console.log(meal0.getDescription());
+console.log(Burger);
+
+
+
+
+
+// ++++++++++++++++++++++++++++++++++
+// objects using namespaces
+// ++++++++++++++++++++++++++++++++++
+
+// or defined as a namespace with prototypes
+window.Namespace = {};
+
+Namespace.Burger = function(type){
+	this.type = type;
+	this.patty = "double";
+}
+
+// add methods to your class (Burger) prototype
+Namespace.Burger.prototype.getDescription = function(){
+	return this.patty+' '+this.type+' burger';
+}
+
+var meal1 = new Namespace.Burger('cheese');
+var meal2 = new Namespace.Burger('bacon');
+
+console.log(meal1.getDescription());
+console.log(meal2.getDescription());
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
